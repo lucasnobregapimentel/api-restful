@@ -23,6 +23,12 @@ export class PrismaPostsRepository implements PostsRepository {
     return user
   }
 
+  async findMany() {
+    const posts = await prisma.post.findMany()
+
+    return posts
+  }
+
   async create(data: Prisma.PostUncheckedCreateInput) {
     const post = await prisma.post.create({
       data,
