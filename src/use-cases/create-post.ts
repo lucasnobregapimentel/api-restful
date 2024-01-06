@@ -6,6 +6,7 @@ interface CreatePostUseCaseRequest {
   title: string
   content: string
   userId: string
+  author: string
 }
 
 interface CreatePostUseCaseResponse {
@@ -19,6 +20,7 @@ export class CreatePostUseCase {
     title,
     content,
     userId,
+    author,
   }: CreatePostUseCaseRequest): Promise<CreatePostUseCaseResponse> {
     const doesUserIdExists = await this.postsRepository.findByUserId(userId)
 
@@ -30,6 +32,7 @@ export class CreatePostUseCase {
       title,
       content,
       userId,
+      author,
     })
 
     return {
