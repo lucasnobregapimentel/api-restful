@@ -5,6 +5,7 @@ import { getAllPosts } from './get-all-posts'
 import { getPost } from './get-post'
 import { getUserPosts } from './get-user-posts'
 import { getMyPosts } from './get-my-posts'
+import { removePost } from './remove-post'
 
 export async function postsRoutes(app: FastifyInstance) {
   app.get('/', getAllPosts)
@@ -12,4 +13,5 @@ export async function postsRoutes(app: FastifyInstance) {
   app.get('/users/:userId', getUserPosts)
   app.get('/me', { onRequest: [verifyJwt] }, getMyPosts)
   app.post('/', { onRequest: [verifyJwt] }, create)
+  app.delete('/:id', { onRequest: [verifyJwt] }, removePost)
 }

@@ -6,4 +6,5 @@ export interface PostsRepository {
   findMany(): Promise<Post[]>
   findManyByUserId(userId: string): Promise<Post[]>
   create(data: Prisma.PostUncheckedCreateInput): Promise<Post>
+  removePost(id: string): Promise<Post>
 }
